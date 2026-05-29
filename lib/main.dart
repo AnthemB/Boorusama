@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter_displaymode/flutter_displaymode.dart';
 
 // Project imports:
 import 'core/boorusama_app.dart';
@@ -15,6 +16,10 @@ import 'foundation/vendors/revenuecat/revenuecat.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  if (isAndroid()) {
+  await FlutterDisplayMode.setHighRefreshRate();
+  }
 
   final cronetAvailable = await CronetImpl(
     gServices: GooglePlayServicesImpl(),
